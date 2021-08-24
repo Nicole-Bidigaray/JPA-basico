@@ -38,14 +38,14 @@ public class ExecutionPart3 {
         // =============================================================================================================
 
         // 2.2 - Utilizando o método find do entityManager
-        // Trazendo somente 1 resultado
-        Aluno alunoEntityManager = entityManager.find(Aluno.class, 1);
-
-        // Trazendo uma lista como resultado
-        // Nao eh possivel!!! Deve utilizar um dos métodos utilizados abaixos nas partes 2.3 - 2.4 - 2.5
-
-        // Resultados das consultas acima
-        System.out.println("Consulta alunoEntityManager: " + alunoEntityManager);
+//        // Trazendo somente 1 resultado
+//        Aluno alunoEntityManager = entityManager.find(Aluno.class, 1);
+//
+//        // Trazendo uma lista como resultado
+//        // Nao eh possivel!!! Deve utilizar um dos métodos utilizados abaixos nas partes 2.3 - 2.4 - 2.5
+//
+//        // Resultados das consultas acima
+//        System.out.println("Consulta alunoEntityManager: " + alunoEntityManager);
 
         // =============================================================================================================
 
@@ -73,22 +73,22 @@ public class ExecutionPart3 {
         // 2.4 - JPQL
 
 //        // Trazendo somente 1 resultado
-//        String jpql = "select a from Aluno a where a.nome = :nome";
-//        Aluno alunoJPQL = entityManager
-//                .createQuery(jpql, Aluno.class)
-//                .setParameter("nome", nome)
-//                .getSingleResult();
-//
-//        // Trazendo uma lista como resultado
-//        String jpqlList = "select a from Aluno a where a.estado = :estado";
-//        List<Aluno> alunoJPQLList = entityManager
-//                .createQuery(jpqlList, Aluno.class)
-//                .setParameter("estado", estadoParaAdicionar)
-//                .getResultList();
-//
-//        // Resultados das consultas acima
-//        System.out.println("Consulta alunoJPQL: " + alunoJPQL);
-//        alunoJPQLList.forEach(Aluno -> System.out.println("Consulta alunoJPQLList: " + Aluno));
+        String jpql = "select a from Aluno a where a.nome = :nome";
+        Aluno alunoJPQL = entityManager
+                .createQuery(jpql, Aluno.class)
+                .setParameter("nome", nome)
+                .getSingleResult();
+
+        // Trazendo uma lista como resultado
+        String jpqlList = "select a from Aluno a where a.estado.nome = :estadoNome";
+        List<Aluno> alunoJPQLList = entityManager
+                .createQuery(jpqlList, Aluno.class)
+                .setParameter("estadoNome", "Rio de Janeiro")
+                .getResultList();
+
+        // Resultados das consultas acima
+        System.out.println("Consulta alunoJPQL: " + alunoJPQL);
+        alunoJPQLList.forEach(Aluno -> System.out.println("Consulta alunoJPQLList: " + Aluno));
 
         // =============================================================================================================
 
